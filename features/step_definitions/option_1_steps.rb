@@ -1,34 +1,41 @@
 
-Given('I navigate to the Green Kart homepage') do
-  visit 'https://rahulshettyacademy.com/seleniumPractise/#/'
-  sleep 1 # The sleeps are added to slow down the automation to show it working
-end
 
-
-Then('I should see the Green Kart homepage') do
-  page.has_title?('GreenKart - veg and fruits kart')
-end
-
-Given('I navigate to the homepage') do
+Given ('I am on the homepage') do
   visit 'https://rahulshettyacademy.com/seleniumPractise/#/'
 end
 
-When('I click on the checkout bag') do
-  click_on('#root > div > header > div > div.cart > a.cart-icon > img')
+When ('I click add to cart') do
+  page.all(:button, 'ADD TO CART')[1]
 end
 
-Then('I should see a summary list of my items') do
-  page.has_selector?('#root > div > header > div > div.cart > div.cart-preview.active')
+Then('I should see a proceed to checkout button') do
+  page.has_text?('PROCEED TO CHECKOUT')
 end
 
-When('I add items to the checkout bag') do
-  page.all(:button, 'ADD TO CART').click.each do |item|
-    puts item
-end
-  all(:button, 'ADD TO CART')[0].click
+Given ('I am on the checkout page') do
+  visit 'https://rahulshettyacademy.com/seleniumPractise/#/cart'
 end
 
-Then('I should see a total cost of the items') do
-  page.has_selector?('#root > div > header > div > div.cart > div.cart-info')
+When ('I look at the cost breakdown') do
+  visit 'https://rahulshettyacademy.com/seleniumPractise/#/cart'
 end
+
+Then ('I can see the total cost') do
+  page.has_text?('Total Amount')
+end
+
+Given('I am on the cart page') do
+  visit 'https://rahulshettyacademy.com/seleniumPractise/#/cart'
+end
+
+When('I click place order') do
+  click_button('Place Order')
+end
+
+Then('I should place order of items') do
+  visit 'https://rahulshettyacademy.com/seleniumPractise/#/country'
+end
+
+
+
 
