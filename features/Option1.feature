@@ -1,7 +1,5 @@
 Feature: GreenKart Feature
 
-
-
 Scenario: checkout button
 Given I am on the homepage
 When I click add to cart
