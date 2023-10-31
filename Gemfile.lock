@@ -79,8 +79,8 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
-PLATFORMS
-  arm64-darwin-23
+
+  arm64-darwin-22
 
 DEPENDENCIES
   capybara
