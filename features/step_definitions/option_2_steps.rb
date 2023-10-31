@@ -6,3 +6,7 @@ end
 Then('I should see the Para Bank homepage') do
   pending # Write code here that turns the phrase above into concrete actions
 end
+
+When("I create a {string} username") do ||
+  fill_in 'username', with: 'Lindsay.ezeagu@solirius.com' 
+end
