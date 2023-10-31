@@ -1,8 +1,42 @@
-
-Given('I navigate to the Green Kart homepage') do
+Given ('I am on the homepage') do
   visit 'https://rahulshettyacademy.com/seleniumPractise/#/'
-  sleep 1 # The sleeps are added to slow down the automation to show it working
 end
+
+
+When ('I click add to cart') do
+  page.all(:button, 'ADD TO CART')[1]
+end
+
+Then('I should see a proceed to checkout button') do
+  page.has_text?('PROCEED TO CHECKOUT')
+end
+
+Given ('I am on the checkout page') do
+  visit 'https://rahulshettyacademy.com/seleniumPractise/#/cart'
+end
+
+When ('I look at the cost breakdown') do
+  visit 'https://rahulshettyacademy.com/seleniumPractise/#/cart'
+end
+
+Then ('I can see the total cost') do
+  page.has_text?('Total Amount')
+end
+
+Given('I am on the cart page') do
+  visit 'https://rahulshettyacademy.com/seleniumPractise/#/cart'
+end
+
+When('I click place order') do
+  click_button('Place Order')
+end
+
+Then('I should place order of items') do
+  visit 'https://rahulshettyacademy.com/seleniumPractise/#/country'
+end
+
+
+
 
 Then('I should see the Green Kart homepage') do
   pending # Write code here that turns the phrase above into concrete actions
@@ -54,4 +88,5 @@ Then('I should be able to remove it') do
   expect(page).to have_selector('.cart-info', text:'0')  # <- Verify nothing in cart
 
 end
+
 
