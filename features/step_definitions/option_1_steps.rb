@@ -10,7 +10,8 @@ end
 
 Given('I add item to the cart') do
   first(:button, 'ADD TO CART').click # <- Click add to cart
-  
+  sleep 1
+
   expect(page).to have_selector('.cart-info', text:'1') # <- Verify 1 in cart
 
 end
@@ -19,8 +20,10 @@ end
 Then('I should be able to remove it') do
 
   find(:xpath, "//img[@alt='Cart']").click # <- Click shopping cart icon
+  sleep 1
 
   find(:xpath, "//div[@class='cart-preview active']//div//div//a[@class='product-remove'][normalize-space()='×']").click # <- Click x to remove item
+  sleep 1
 
   expect(page).to have_selector('.cart-info', text:'0')  # <- Verify nothing in cart
 
